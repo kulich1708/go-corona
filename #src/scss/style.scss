@@ -1,0 +1,497 @@
+// файл обнуления =====================================
+
+@import "null.scss";
+
+// ====================================================
+
+@mixin font($font_name, $file_name, $weight, $style) {
+	@font-face {
+		font-family: $font_name;
+		font-display: swap;
+		src: url("../fonts/#{$file_name}.woff") format("woff"), url("../fonts/#{$file_name}.woff2") format("woff2"),
+			url("../fonts/#{$file_name}.ttf") format("truetype");
+		font-weight: #{$weight};
+		font-style: #{$style};
+	}
+}
+
+// Шрифты  ===========================================
+
+// &display-swap
+// &subset=cyrillic-ext
+@import "fonts.scss";
+
+// ===================================================
+
+// Иконочные шрифты
+
+@import "icon.scss";
+
+// ===================================================
+
+// Шрифт по умолчанию ================================
+
+$fontfamily: "";
+
+// ===================================================
+
+// Переменные ========================================
+
+$minWidth: 320;
+$mw: 1000;
+$md1: $mw + 12;
+$md2: 991.98;
+$md3: 767.98;
+$md4: 479.98;
+
+// ===================================================
+
+// Общие стили =======================================
+
+body {
+	font-family: "Rubik";
+	font-weight: 700;
+	color: #000;
+	font-size: 10px;
+	&._lock {
+		overflow: hidden;
+	}
+}
+
+// ===================================================
+
+// Оболочка ==========================================
+
+.wrapper {
+	width: 100%;
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	&_loaded {
+	}
+}
+
+// ====================================================
+
+// Основная сетка
+
+._container {
+	max-width: $mw + px;
+	margin: 0 auto;
+	padding: 0 10px;
+}
+
+.main {
+	padding: 150px 0 106px 0;
+	&__content {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		@media screen and (max-width: $md3+px) {
+			flex-direction: column;
+		}
+	}
+
+	&__column {
+	}
+
+	&__imageblock {
+		position: relative;
+		margin-right: 187px;
+		margin-left: 70px;
+		@media screen and (max-width: $md3+px) {
+			margin-top: 100px;
+			margin-right: 40px;
+			order: 2;
+		}
+		&:before,
+		&:after {
+			position: absolute;
+			content: "";
+			width: 77px;
+			height: 77px;
+			border-radius: 30px;
+			background: #ec5863;
+			z-index: -1;
+		}
+		p {
+			position: absolute;
+			content: "";
+			width: 147px;
+			height: 147px;
+			border-radius: 30px;
+			background: #ec5863;
+			z-index: -1;
+			top: -56px;
+			left: -71px;
+		}
+		&:after {
+			bottom: -27px;
+			left: -40px;
+		}
+		&:before {
+			bottom: 20%;
+			right: -40px;
+		}
+		img {
+			width: 100%;
+			height: 100%;
+			display: block;
+			filter: drop-shadow(2px 4px 32px rgba(0, 0, 0, 0.12));
+			min-width: 230px;
+			@media screen and (max-width: $md3+px) {
+				min-width: 0;
+			}
+		}
+	}
+
+	&__info {
+		@media screen and (max-width: $md3+px) {
+			order: 1;
+		}
+	}
+
+	&__title {
+	}
+
+	&__subtitle {
+	}
+
+	&__btn {
+	}
+}
+.statistics {
+	padding: 103px 0 116px 0;
+	background: #fafbfd;
+
+	&__items {
+		display: inline-flex;
+		align-items: center;
+		position: relative;
+		box-shadow: 0px 2px 24px rgba(88, 126, 236, 0.15);
+		border-radius: 16px;
+		padding: 28px 80px;
+		background: #fff;
+		z-index: 3;
+		@media screen and (max-width: $md3+px) {
+			flex-direction: column;
+		}
+	}
+	&__items-container {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 60px;
+	}
+	&__items-wrap {
+		position: relative;
+		z-index: 1;
+		margin-right: 50px;
+		margin-left: 30px;
+		&:before,
+		&:after {
+			position: absolute;
+			content: "";
+			background: #ec5863;
+			z-index: -1;
+		}
+		p {
+			position: absolute;
+			content: "";
+			width: 127px;
+			height: 127px;
+			background: #ec5863;
+			z-index: -1;
+			top: 0;
+			right: -50px;
+			border-radius: 30px;
+			transform: rotate(-30deg);
+		}
+		@media screen and (max-width: $md3+px) {
+			&:before,
+			&:after,
+			& p {
+				display: none;
+			}
+		}
+		&:after {
+			width: 97px;
+			height: 97px;
+			left: 40%;
+			top: -50px;
+			border-radius: 16px;
+			transform: rotate(105deg);
+		}
+		&:before {
+			width: 65px;
+			height: 65px;
+			left: -30px;
+			bottom: -30px;
+			transform: rotate(-30deg);
+			border-radius: 30px;
+		}
+	}
+
+	&__item {
+		background: #fff;
+		margin-right: 80px;
+		&:last-child {
+			margin-right: 0px;
+		}
+		@media screen and (max-width: $md3+px) {
+			margin-right: 0;
+			margin-bottom: 40px;
+		}
+	}
+
+	&__content {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		@media screen and (max-width: $md3+px) {
+			flex-direction: column;
+			text-align: center;
+		}
+	}
+
+	&__info {
+		flex: 0 1 auto;
+		margin-right: 75px;
+		@media screen and (max-width: $md3+px) {
+			margin-right: 0;
+			flex: 0 1 100%;
+		}
+	}
+
+	&__video {
+		flex: 1 0 50%;
+		padding: 25px 95px;
+		background: #ffffff;
+		box-shadow: 0px 4px 18px rgba(88, 126, 236, 0.18);
+		border-radius: 8px;
+		background: #fff;
+		video {
+			width: 100%;
+			height: 100%;
+		}
+		@media screen and (max-width: $md3+px) {
+			margin-top: 50px;
+			flex: 0 1 100%;
+			padding: 15px 55px;
+		}
+	}
+}
+.item-statistics {
+	&__data {
+		font-weight: bold;
+		font-size: 36px;
+		line-height: 43px;
+		text-align: center;
+		letter-spacing: 0.14em;
+		color: #ec5863;
+	}
+
+	&__name {
+		font-size: 11px;
+		line-height: 13px;
+		text-align: center;
+		letter-spacing: 0.37em;
+		text-transform: uppercase;
+	}
+}
+.heal {
+	padding: 80px 0 45px 0;
+	&__content {
+	}
+
+	&__info {
+		margin-bottom: 46px;
+	}
+
+	&__items {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		@media screen and (max-width: $md3+px) {
+			flex-direction: column;
+		}
+	}
+
+	&__item-wrap {
+		margin-right: 72px;
+		position: relative;
+		cursor: pointer;
+		&:hover {
+			.item-heal {
+				box-shadow: 0px 10px 24px rgba(15, 21, 37, 0.18);
+				transition: 0.2s;
+				&__img i {
+					color: #4285f4;
+					transition: 0.2s;
+				}
+			}
+		}
+		&:not(:hover) {
+			.item-heal {
+				transition: 0.2s;
+				&__img i {
+					transition: 0.2s;
+				}
+			}
+		}
+		@media screen and (max-width: $md2+px) {
+			margin-right: 55px;
+		}
+		@media screen and (max-width: $md3+px) {
+			margin-right: 0;
+			max-width: 350px;
+			margin-bottom: 40px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+		&:last-child {
+			margin-right: 0;
+		}
+		&:nth-child(1),
+		&:nth-child(3) {
+			&:after,
+			&:before {
+				z-index: -1;
+				background: #ec5863;
+				position: absolute;
+				content: "";
+				@media screen and (max-width: $md3+px) {
+					display: none;
+				}
+			}
+		}
+		&:nth-child(1) {
+			&:before {
+				width: 65.75px;
+				height: 65.75px;
+				left: -20px;
+				bottom: -25px;
+				border-radius: 16px;
+				transform: rotate(-30deg);
+			}
+			&:after {
+				width: 96.96px;
+				height: 96.96px;
+				right: -62px;
+				top: 31px;
+				border-radius: 30px;
+				transform: rotate(105deg);
+			}
+		}
+		&:nth-child(3) {
+			&:before {
+				width: 127.47px;
+				height: 127.47px;
+				bottom: -25px;
+				left: -115px;
+				border-radius: 30px;
+				border-radius: 30px;
+				transform: rotate(-30deg);
+			}
+			&:after {
+				width: 65.75px;
+				height: 65.75px;
+				right: -27px;
+				top: -30px;
+				border-radius: 16px;
+				transform: rotate(-30deg);
+			}
+		}
+	}
+	&__item {
+		padding: 36px 18px;
+		z-index: 1;
+		background: #fff;
+		box-shadow: 0px 4px 18px rgba(88, 126, 236, 0.18);
+		border-radius: 8px;
+	}
+
+	&__bottom {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: 75px;
+		@media screen and (max-width: $md4+px) {
+			flex-direction: column;
+		}
+	}
+
+	&__store {
+		width: 160px;
+		height: 55px;
+		margin-right: 56px;
+		&:last-child {
+			margin-right: 0;
+		}
+		&:hover {
+			transform: scale(1.1);
+			transition: .2s;
+		}
+		&:not(:hover) {
+			transition: .2s;
+		}
+		@media screen and (max-width: $md4+px) {
+			margin-right: 0;
+			margin-bottom: 20px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+		img {
+			object-fit: cover;
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+.item-heal {
+	&__img {
+		i {
+			font-size: 72px;
+			text-align: center;
+			color: #ec5863;
+		}
+	}
+
+	&__info {
+		margin-top: 60px;
+	}
+
+	&__title {
+		font-size: 16px;
+		line-height: 138.5%;
+		text-align: center;
+		letter-spacing: 0.08em;
+		color: #000000;
+	}
+
+	&__subtitle {
+		margin-top: 4px;
+		font-weight: normal;
+		font-size: 12px;
+		line-height: 138.5%;
+		letter-spacing: 0.08em;
+		text-align: center;
+		color: #616161;
+	}
+}
+
+// Импорты файлов scss ===============================
+
+@import "header";
+
+@import "ui";
+
+@import "form";
+
+@import "footer";
+
+// ===================================================
